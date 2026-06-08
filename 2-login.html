@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("back.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            
+
+        }
+        .box1{
+            height: 60vh;
+            width: 50vw; 
+            align-items: center;
+            position: relative;
+            top: 10vh;
+            bottom: 70vw;
+            left: 25vw;
+            border-radius: 25%;
+            background: rgba(255, 255, 255, 0.364); 
+            backdrop-filter: blur(5px);          
+            
+        }
+        .head{
+            background-color: rgba(19, 133, 133, 0.316);
+            display: flex;         
+            justify-content: center;
+            font-style: oblique;
+        }
+        .in1{
+            width: 35vw;
+            height: 4vh;
+            position: absolute;
+            top: 40vh;
+            right: 33vw;
+            border-radius: 5px;
+        }
+       .in2{
+            width: 35vw;
+            height: 4vh;
+            position: absolute;
+            top: 49vh;
+            right: 33vw;
+            border-radius: 5px;
+        }
+        button{
+            width: 10vw;
+            height: 5vh;
+            position: absolute;
+            top: 60vh;
+            right: 46vw;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: rgb(19, 133, 133);
+            color: white;
+            border-radius: 10px;
+        }
+        .forgot{
+            position: absolute;
+            top: 70vh;
+            right: 33vw;
+            color: black;
+        }
+        .forgot1{
+            position: absolute;
+            top: 70vh;
+            right: 60vw;
+            color: black;
+        }
+        .forgot:hover{
+            color: rgb(19, 133, 133);
+        }
+        .forgot1:hover{
+            color: rgb(19, 133, 133);
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1 class="ce">InterviewX- Voice-Based AI Mock Interview Assistant</h1>
+    </div>
+    <div class="box1">
+        <h1 class="log" style="text-align: center;">
+            Login Here
+        </h1>
+    </div>
+    <div class="in">
+        <input type="email" placeholder="E-Mail" class="in1"> <br> <br>
+        <input type="password" placeholder="password" class="in2">
+        <button>Login</button>
+        <a href="" class="forgot"> Forgot Password?</a>
+        <a href="2-registerform.html" class=" forgot1"> New User? Registered User </a>
+    </div>
+   
+</body>
+</html>
