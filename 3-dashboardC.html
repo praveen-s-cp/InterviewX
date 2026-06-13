@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .head{
+            width: 100%;
+            text-align: center;
+            font-size: 40px;
+            padding: 20px;
+            color: white;
+            background-color:#020d27dd;
+            border: 2px solid #243c74dd;
+            border-radius: 10px;
+        }
+        .des{
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-style: italic;
+            color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #0F172A;
+        }
+        .main1, .main2, .main3 {
+            border: 1px solid #343030;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition:all 0.8s ease;
+            background-color:#ffffffe1;
+            border-radius: 10px;
+        }
+        .main4 button{
+            height: 20vh;
+            position: relative;
+            left: 85vw;
+        }
+        button {
+            background-color: #bb8e8e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #43464b;
+            background-color:#180a70;
+        }
+        .main1:hover, .main2:hover, .main3:hover {
+            transform: translatey(-30px);
+        }
+        .main4 button{
+            width: 8vw;
+            height: 5vh;
+        }
+        .main1 button:hover{
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #43464b;
+            background-color:#0f172ae7;
+            transform: translatey(-10px);
+            transition:all 0.8s ease;
+        }
+        .main2 button:hover{
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #43464b;
+            background-color:#152039e2;
+            transform: translatey(-10px);
+            transition:all 0.8s ease;
+        }
+        .main3 button:hover{
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #43464b;
+            background-color:#0f172aea;
+            transform: translatey(-10px);
+            transition:all 0.8s ease;
+        }
+        .main4 button:hover{
+            width: 8vw;
+            height: 5vh;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid #43464b;
+            background-color:rgb(155, 155, 155);
+            transform: translatey(-10px);
+            transition:all 0.8s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head" id="welcome">Welcome to the InterviewX Dashboard</h1>
+    <p class="des">Here you can manage your mock interviews and track your progress. Track your performance in various categories. The dashboard provides insights into your interview skills and areas for improvement.</p>
+    <div class="main1">
+        <h1>HR Mock Interview</h1>
+        <p>Practice common HR interview questions and improve your communication, confidence, and self-introduction skills.</p>
+        <a href = "4-HR_interview.html"><button >Start Interview</button></a>
+    </div>
+    <div class="main2">
+        <h1>Technical Mock Interview</h1>
+        <p>Test your technical knowledge with subject-specific questions and strengthen your problem-solving abilities</p>
+        <button>Start Interview</button>
+    </div>
+    <div class="main3">
+        <h1>Performance Report</h1>
+        <p>Review your interview scores, feedback, and overall progress from previous sessions.</p>
+        <button>View Report</button>
+    </div>
+    <div class="main4">
+        <a href="1-index.html">
+            <button onclick="handleLogout()">Logout</button>
+        </a>
+    </div>
+</body>
+
+    <script>
+        // FIX 5: window.onload use pannrom - page load aana piragu run aagum
+        window.onload = function() {
+            let currentUser = localStorage.getItem("currentUser");
+            console.log("username =", localStorage.getItem("username"));
+            console.log("password =", localStorage.getItem("password"));
+            console.log("currentUser =", currentUser);
+
+            if (currentUser) {
+                // Username irundha welcome message show pannu
+                document.getElementById("welcome").innerText = "Welcome to InterviewX Dashboard, " + currentUser + "!";
+            } else {
+                // Username illana login page ku anuppu
+                alert("Please login first!");
+                window.location.href = "2-loginC.html";
+            }
+        }
+
+        function handleLogout() {
+            // Logout panna currentUser clear pannu
+            localStorage.removeItem("currentUser");
+        }
+    </script>
+</html>
