@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        body{
+            height: 100vh;
+            position: relative;
+            margin: 0;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            
+           background: linear-gradient(135deg,#0f172a,#1e293b,#4338ca);            
+        }
+        .head{
+            width: 99.5vw;
+            height: 10vh;
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color:#60a5fa;
+            padding: 5px;
+            border-radius: 20px;
+        }
+        #det{
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color:#c084fcbc ;
+            padding: 1px;
+            width: 100vw;
+
+        }
+        .heading{
+            width: 100vw;
+            height: 20vh;
+            background: #1e293b;
+            position: absolute;
+        }
+        #a1{
+            width: 54vw;
+            height: 60vh;
+            background: #312e81;
+            border: 2px solid #8b5cf6;
+            border-radius: 20px;
+            color: white;
+            margin-top: 10vh;
+            font-size: large;
+            position: absolute;
+            top: 30vh;
+            left: 45vw;
+            padding-left: 15px;
+        }
+        #question1{
+            width: 60vw;
+            height: 60vh;
+            color: white;
+            font-size: large;
+            background: #1e293b;
+            border: 2px solid #3b82f6; 
+            border-radius: 20px;
+            padding: 0.5 px;
+            position: absolute;
+            top: 40vh;       
+            padding-left: 15px;
+        }
+        #qh{
+            width: 60vw;
+            height: 10vh;
+            font-size: xx-large;
+            color:#60a5fa;
+            position: absolute;
+            left: 15vw;
+        }
+        #ah{
+            width: 20vw;
+            font-size: xx-large;
+            color:#c084fc;
+            position: absolute;
+            right: 15vw;
+        }
+        #log{
+            width: 10vw;
+            height: 5vh;
+            color: white;
+            background-color:  rgba(71, 68, 68, 0.423);
+            position: absolute;
+            border-radius: 20px;
+            top: 5vh;
+            right: 2vw;
+        }
+        #log:hover{
+            
+            transition: all 0.8 ease;
+            background-color: #4338ca;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1 id="welcome">HR Interview Results</h1>
+    </div>
+    <button id="log" onclick="tech()">Tech Interview</button>
+    <div id="det">
+        <h2 id="us"></h2>
+        <h2 id="em">wait</h2>
+    </div>
+    <div class="heading">
+        <h2 id = "qh">Questions</h2>
+        <h2 id="ah">Your Answers</h2>
+    </div>
+    <div id="question1">
+    </div>
+    <h1 id="a1"></h1>
+    
+</body>
+    <script>
+
+        window.onload = function() {
+            let currentUser = localStorage.getItem("currentUser");
+            let email = localStorage.getItem("email");
+            document.getElementById("us").innerText = "UserName:  "+currentUser;
+            let em = document.getElementById("em").innerText = "E-Mail:  "+email;
+
+
+            if (currentUser) {
+                console.log(currentUser)
+                document.getElementById("welcome").innerText = "Welcome to HR Interview Results,  " + currentUser + "!";
+                
+            } else {
+                alert("Please login first!");
+                window.location.href = "2-loginC.html";
+            }
+        }
+        const ques = JSON.parse(localStorage.getItem("Questoins"));
+        const ans  = JSON.parse(localStorage.getItem("Answers"));
+        
+        let an1 = document.getElementById("a1");
+        let question = document.getElementById("question1");
+         
+        for(i = 0; i<10; i++){
+            var new1 = document.createElement("h3");
+            var anew = document.createElement("h3");
+            new1.textContent = ques[i];
+            anew.textContent = ans[i];
+            question.append(new1);
+            an1.append(anew);
+            new1.style.marginBottom = "10px";
+            anew.style.marginBottom = "10px";
+
+        }
+        function tech(){
+            window.location.href = "4-Tech_interview.html";
+        }
+    </script>
+</html>
+

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background: linear-gradient(135deg,#0f172a,#1e293b,#2563eb);            
+        }
+        #welcome{
+            width: 100vw;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            font-style: oblique;
+        }
+        #ques{
+            background: rgba(255,255,255,0.1);
+            color: white;
+            width: 20vw;
+            height: 5vh;
+            font-style: italic;
+            border-radius: 20px;
+            padding-top: 5px;
+            padding-left: 30px;
+        }
+        #quesblock{
+            width: 88vw;
+            height: 8vh;
+            font-style: italic;
+            font-weight: 700;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 20px;
+            padding-top: 20px;
+            padding-left: 30px;
+            
+        }
+        button{
+            width:10vw;
+            height: 5vh;
+            font-size: 15px;
+            font-style: oblique;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .user{
+            position: relative;
+        }
+        #but1{
+            position: absolute;
+            top: 44vh;
+            right: 10vw;
+            background-color: rgba(44, 56, 115, 0.585);
+            color: white;
+        }
+        .m{
+            position: absolute;
+            top: 69vh;
+            right: 12vw;
+            color: black;
+            font-size: small;
+        }
+        #quesblock{
+            font-size: xx-large;
+            display: flex;
+            justify-content: start;
+        }
+        #te{
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-style: oblique;
+            font-size: xx-large;
+            font-weight: 700;
+            padding-top: 20px;
+            padding-left: 30px;
+        }
+        #res{
+            font-size: large;
+            color: white;
+            margin-top: 40px;
+            margin-left: 80vw;
+            background-color: rgba(44, 56, 115, 0.585);
+        }
+        #res:hover{
+            background-color: #364864;
+            color: white;
+            transform: translateY(-10px);
+            transition: all 0.8s ease;
+        }
+        #but1:hover{
+            background-color: #34445f;
+            color: white;
+            transform: translateY(-10px);
+            transition: all 0.8s ease;
+        }
+        .mic-container:hover{
+            box-shadow:0 0 100px #030566;
+            transition: all 2s ease;
+        }
+        .mic-container{
+             width:99px;
+             height:100px;
+             border-radius:50%;
+             overflow:hidden;
+             position: absolute;
+             right: 11vw;
+             bottom: 5vh;
+        }
+
+        .mic{
+            width: 7vw;
+            height: 13vh;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1 id="welcome">Welcome to HR Interview</h1>
+    </div><br><br>
+    <h2 id="ques"></h2>
+    <div id="quesblock"></div>
+    <br><button id="but1" onclick="clickb()">Next Question</button>
+    <div class="user">
+        <h3 style = "color: white; font-style: italic; margin-top: 25px; height: 3vh; width: 10vw;" >Answer Input Area</h3>
+        <textarea id = "te" style="width: 90vw; height: 18vh; border-radius: 20px;"></textarea>
+        <div class="mic-container">
+            <img class = "mic" src="micBlueedit1.jpg" alt="" onclick="starte()">
+        </div>
+        
+    </div>
+    <h3 class = "m"> Click to Speak</h3>
+    <button id="res" onclick="re()">View Result</button>
+    
+</body>
+
+    <script>
+        const arr1 = [];
+        const arr = ['1. Tell me about yourself.', '2. What are your strengths?', '3. What are your weaknesses?',  '4. Why do you want to work here?',  '5. Where do you see yourself in five years?',  '6. How do you handle stress and pressure?',
+          '7. Do you prefer working alone or in a team?',  '8. What motivates you?',  '9. How do you prioritize your tasks?',   '10. How do you handle failure?']
+        
+       window.onload = function() {
+            let currentUser = localStorage.getItem("currentUser");
+
+            if (currentUser) {
+                console.log(currentUser)
+                document.getElementById("welcome").innerText = "Welcome to HR Interview,  " + currentUser + "!";
+                console.log(arr[0]);
+                
+            } else {
+                alert("Please login first!");
+                window.location.href = "2-loginC.html";
+            }
+        }
+        
+         var ques = document.getElementById("quesblock");
+         var hq = document.getElementById("ques");
+         hq.textContent = "Question: 1 / 10";
+         ques.textContent = arr[0];
+        
+        let currentindex = 0;
+          function clickb(){
+                if(currentindex < arr.length-1){   
+                    currentindex++;
+                    hq.textContent = "Question: "+(currentindex+1)+" / "+"10";
+                    ques.textContent = arr[currentindex];
+                    if(currentindex === arr.length-1){
+                        but1.remove();
+                    }
+                }
+          }
+          let te = document.getElementById("te");
+          const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+          const recognition = new SpeechRecognition();
+
+          function starte(){
+            recognition.start();
+
+            recognition.onstart = function(){
+            }
+
+        recognition.onresult = function(event){
+
+            let text = event.results[0][0].transcript;
+            te.textContent = text;
+
+            arr1[currentindex] = text;
+            
+            but1.addEventListener("click", function(event){
+                te.textContent = " ";
+            })
+            
+            console.log(" ");
+            
+        for(let i =0 ; i<arr1.length; i++){
+            console.log(arr1[i])
+        }
+            localStorage.setItem("Answers", JSON.stringify(arr1));
+        }
+
+        recognition.onerror = function(event){
+            console.log("Error:", event.error);
+        }
+    }
+        localStorage.setItem("Questions",JSON.stringify(arr));
+    function re(){
+         window.location.href = "HRresult.html";
+    }
+    </script>
+</html>
