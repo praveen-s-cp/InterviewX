@@ -29,7 +29,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 20px;
-            color:#c084fcbc ;
+            color:#60a5fa;
             padding: 1px;
             width: 100vw;
 
@@ -42,7 +42,7 @@
         }
         #a1{
             width: 54vw;
-            height: 60vh;
+            min-height: 60vh;
             background: #312e81;
             border: 2px solid #8b5cf6;
             border-radius: 20px;
@@ -56,7 +56,7 @@
         }
         #question1{
             width: 60vw;
-            height: 60vh;
+            min-height: 60vh;
             color: white;
             font-size: large;
             background: #1e293b;
@@ -137,16 +137,16 @@
                 window.location.href = "2-loginC.html";
             }
         }
-        const ques = JSON.parse(localStorage.getItem("Questoins"));
+        const ques = JSON.parse(localStorage.getItem("Questions"));
         const ans  = JSON.parse(localStorage.getItem("Answers"));
         
         let an1 = document.getElementById("a1");
         let question = document.getElementById("question1");
          
-        for(i = 0; i<10; i++){
+        for(i = 0; i<=10; i++){
             var new1 = document.createElement("h3");
             var anew = document.createElement("h3");
-            new1.textContent = ques[i];
+            new1.textContent = (i + 1) + ". " + ques[i];
             anew.textContent = ans[i];
             question.append(new1);
             an1.append(anew);
@@ -157,6 +157,20 @@
         function tech(){
             window.location.href = "4-Tech_interview.html";
         }
+        console.log("Last String")
+        console.log(ques.length);
+        console.log(ans.length);
+        let sum =0 ;
+        let count =0;
+        for(let i =0 ; i<10; i++){
+            if(ques[i].length >30){
+                console.log(ques[i]+" "+ques[i].length);
+                sum +=ques[i].length;
+                count++;
+            }
+        }
+        let div = sum/count;
+        console.log(div)
     </script>
 </html>
 
