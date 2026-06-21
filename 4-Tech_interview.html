@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    background: linear-gradient(
+    135deg,
+    #000428,
+    #004e92,
+    #0ea5e9
+    );
+}              
+        #welcome{
+            width: 96vw;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            color: #7dd3fc;
+            text-shadow: 0 0 5px rgba(125,211,252,0.8);
+            padding: 20px;
+            border-radius: 20px;
+            font-style: oblique;
+        }
+        #ques{
+            background: rgba(255,255,255,0.1);
+            color: #7dd3fc;
+            text-shadow: 0 0 5px rgba(125,211,252,0.8);
+            width: 20vw;
+            height: 5vh;
+            font-style: italic;
+            border-radius: 20px;
+            padding-top: 5px;
+            padding-left: 30px;
+        }
+        #quesblock{
+            width: 88vw;
+            height: 8vh;
+            font-style: italic;
+            font-weight: 700;
+            color: lightblue;
+            text-shadow: 0 0 2px rgba(125,211,252,0.8);
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding-top: 20px;
+            padding-left: 30px;
+            
+        }
+        button{
+            width:10vw;
+            height: 5vh;
+            font-size: 15px;
+            font-style: oblique;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            background-color: #004e92;
+        }
+        .user{
+            position: relative;
+        }
+        #but1{
+            position: absolute;
+            top: 65vh;
+            right: 10vw;
+            background-color:  #004e92,;
+            color: white;
+        }
+        .m{
+            color: #67e8f9;
+            position: absolute;
+            top: 91vh;
+            right: 12vw;
+            color: black;
+            font-size: small;
+        }
+        #quesblock{
+            font-size: xx-large;
+            display: flex;
+            justify-content: start;
+            box-shadow:0 0 20px rgba(37,99,235,0.3);
+            backdrop-filter: blur(10px);
+        }
+        #te{
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-style: oblique;
+            font-size: xx-large;
+            font-weight: 700;
+            padding-top: 20px;
+            padding-left: 30px;
+        }
+        #res{
+            font-size: large;
+            color: white;
+            margin-top: 20px;
+            margin-left: 78vw;
+            background-color: rgba(44, 56, 115, 0.585);
+        }
+        #res:hover{
+            background-color:#0ea4e9d8;
+            color: white;
+            transform: translateY(-10px);
+            box-shadow:0 0 20px #004e92,;
+            backdrop-filter: blur(10px);
+            transition: all 0.8s ease;
+        }
+        #but1:hover{
+            background-color: #0ea4e9d0;
+            color: white;
+            transform: translateY(-10px);
+            box-shadow:0 0 20px rgba(37,99,235,0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.8s ease;
+        }
+        .mic-container:hover{
+            box-shadow:0 0 100px #030566;
+            transition: all 2s ease;
+        }
+        .mic-container{
+             width:99px;
+             height:100px;
+             border-radius:50%;
+             overflow:hidden;
+             position: absolute;
+             right: 11vw;
+             bottom: 5vh;
+        }
+
+        .mic{
+            width: 7vw;
+            height: 13vh;
+        }
+        .selection{
+            width: 35vw;
+            height: 15vh;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow:0 0 20px rgba(37,99,235,0.3);
+            backdrop-filter: blur(10px);
+        }
+        #langBtn{
+            width: 15vw;
+            padding:10px 20px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            background-color:#0ea5e9;
+        }
+
+        #languageDialog{
+            color: white;
+             border:none;
+             border-radius:20px;
+             padding:20px;
+             background: linear-gradient(135deg,#000428,#004e92,#0ea5e9);
+        }
+        #languageDialog button{
+            background-color:#0ea5e9;
+        }
+
+        #languageDialog::backdrop{
+             background:rgba(0,0,0,0.5);
+        }
+        #sel{
+            font-style: oblique;
+            color: #7dd3fc;
+            text-shadow: 0 0 5px rgba(125,211,252,0.8);
+        }
+        #te{
+            font-style: oblique
+            ;color: whitesmoke;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1 id="welcome">Welcome to Technical Interview</h1>
+    </div><br><br>
+    <div class="selection">
+        <H1 id="sel">Select Your Interview Type</H1>
+        <button id="langBtn">🌐 Select Language</button>
+    <dialog id="languageDialog">
+        <h2>Select Your Interview Type</h2>
+
+        <button onclick="selectLanguage('Computer Science')">
+        Computer Science
+    </button><br><br>
+
+    <button onclick="selectLanguage('Java')">
+        Java
+    </button><br><br>
+
+    <button onclick="selectLanguage('Python')">
+        Python
+    </button><br><br>
+
+    <button onclick="closeDialog()">
+        Close
+    </button>
+</dialog>
+    </div>
+    <br><br>
+    <h2 id="ques"></h2>
+    <div id="quesblock"></div>
+    <br><button id="but1" onclick="clickb()">Next Question</button>
+    <div class="user">
+        <h3 style = "color: white; font-style: italic; margin-top: 25px; height: 3vh; width: 10vw;" >Answer Input Area</h3>
+        <textarea id = "te" style="width: 90vw; height: 18vh; border-radius: 20px;"></textarea>
+        <div class="mic-container">
+            <img class = "mic" src="techmic1.jpg" alt="" onclick="starte()">
+        </div>
+        
+    </div>
+    <h3 class = "m"> Click to Speak</h3>
+    <button id="res" onclick="re()">View Result</button>
+    
+</body>
+
+    <script>
+       const arr1 = [];
+        let currentindex = 0;
+        let currentques = [];
+       const arr_j = [' Which skills do developers need to code in Java?', 
+                    ' Which soft skills do developers need to code in Java?', 
+                    ' What are your strongest Java coding skills?',
+                    ' Which Java coding skills do you need to improve?', 
+                    ' How do you keep up to date with best coding practices in Java?',
+                    ' Describe your experience with Scrum.',
+                    ' Describe your Java coding experience.',
+                    ' Describe your largest project that involved coding in Java.',   
+                    ' What are your favorite Java features?',
+                    ' What are your least favorite Java features?']
+
+        const arr_cs = [
+                        ' What is a file?', 
+                        ' Describe a chipset.',
+                        ' What is an operating system and what are the popular operating systems used today?',
+                        ' What is primary and secondary memory?',     
+                        ' What are the primary components of a computer system?',
+                        ' What is an interface?',
+                        ' What is a constructor?',
+                        ' Explain the benefits of working in an Agile environment and the drawbacks as well.',
+                        ' Explain the differences between REST and SOAP web services.',
+                        ' In network architecture, explain the role of DMZ.'
+                    ]
+        const arr_py = [    
+                        ' What is Python and what are its applications?', 
+                        ' Explain what the # symbol does in Python.',
+                        ' What are lists in Python? How are they used?',
+                        ' Tell me what you understand about variables in Python.',
+                        ' What are modules in Python?', 
+                        ' What is a namespace and what types of namespaces are there?',
+                        ' Explain, with an example, how you would use Python to delete files.',
+                        ' What is a boolean?',
+                        ' What is PEP 8 and why is it important?', 
+                        ' Explain your understanding of exception handling in Python.'
+                    ]    
+ let dialog = document.getElementById("languageDialog");
+        let langbtn = document.getElementById("langBtn");
+        document.getElementById("langBtn").addEventListener("click", () => {
+          dialog.showModal();
+});
+
+        function closeDialog(){
+         dialog.close();
+        }
+
+        function selectLanguage(lang){
+            localStorage.setItem("language", lang);
+            langbtn.textContent = lang;
+            dialog.close();
+            if(lang === "Java"){
+                currentques = arr_j;
+                currentques.sort(() => Math.random() - 0.5);
+                ques.textContent = currentques[0];
+                localStorage.setItem("Java-que",JSON.stringify(currentques));
+                
+                
+            }
+            else if(lang ==="Computer Science"){
+                currentques = arr_cs;
+                currentques.sort(() => Math.random() - 0.5);
+                ques.textContent = currentques[0];
+                localStorage.setItem("Java-que",JSON.stringify(currentques));
+            }
+            else if(lang === "Python"){
+                currentques = arr_py;
+                currentques.sort(() => Math.random() - 0.5);
+                ques.textContent = currentques[0];
+                localStorage.setItem("Java-que",JSON.stringify(currentques));
+            }
+        }
+        
+       window.onload = function() {
+            let currentUser = localStorage.getItem("currentUser");
+
+            if (currentUser) {
+                console.log(currentUser)
+                document.getElementById("welcome").innerText = "Welcome to Technical Interview,  " + currentUser + "!";
+                
+                
+            } else {
+                alert("Please login first!");
+                window.location.href = "2-loginC.html";
+            }
+        }
+        let select_lang = localStorage.getItem("language");
+        console.log(select_lang);
+        
+           var ques = document.getElementById("quesblock");
+            var hq = document.getElementById("ques");
+            hq.textContent = "Question: 1 / 10";
+
+        
+          function clickb(){
+                if(currentindex < currentques.length-1){   
+                    currentindex++;
+                    hq.textContent = "Question: "+(currentindex+1)+" / "+"10";
+                    ques.textContent = currentques[currentindex];
+                    if(currentindex === currentques.length-1){
+                        but1.innerText = "Finish";
+                    }
+                }
+          }
+         
+        
+           
+         
+          let te = document.getElementById("te");
+          const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+          const recognition = new SpeechRecognition();
+
+          function starte(){
+            recognition.start();
+
+            recognition.onstart = function(){
+            }
+
+        recognition.onresult = function(event){
+            let text = event.results[0][0].transcript;
+            te.textContent = text;
+
+            arr1[currentindex] = (currentindex+1)+".  "+text;
+            
+            but1.addEventListener("click", function(event){
+                te.textContent = " ";
+            })
+            
+            console.log(" ");
+            
+        for(let i =0 ; i<arr1.length; i++){
+            console.log(arr1[i])
+        }
+            localStorage.setItem("Java-ans", JSON.stringify(arr1));
+        }
+
+        recognition.onerror = function(event){
+            console.log("Error:", event.error);
+        }
+    }
+        localStorage.setItem("Ques", JSON.stringify(currentques));
+    function re(){
+         window.location.href = "Techresult.html";
+    }
+
+    </script>
+</html>
+
+
+
+
+
+
+
+
