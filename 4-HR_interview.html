@@ -11,7 +11,8 @@
             width: 100vw;
             text-align: center;
             background: rgba(255,255,255,0.1);
-            color: white;
+            color: #2564ebe6;
+            text-shadow: 0 0 2px rgba(125,211,252,0.8);
             padding: 20px;
             border-radius: 20px;
             font-style: oblique;
@@ -138,10 +139,25 @@
 </body>
 
     <script>
-        const arr1 = [];
-        const arr = ['1. Tell me about yourself.', '2. What are your strengths?', '3. What are your weaknesses?',  '4. Why do you want to work here?',  '5. Where do you see yourself in five years?',  '6. How do you handle stress and pressure?',
-          '7. Do you prefer working alone or in a team?',  '8. What motivates you?',  '9. How do you prioritize your tasks?',   '10. How do you handle failure?']
-        
+         var ques = document.getElementById("quesblock");
+        let arr1 = [];
+        let arr = [
+                'Tell me about yourself.',
+                'What are your strengths?',
+                'What are your weaknesses?',
+                'Why do you want to work here?',
+                'Where do you see yourself in five years?',
+                'How do you handle stress and pressure?',
+                'Do you prefer working alone or in a team?',
+                'What motivates you?',
+                'How do you prioritize your tasks?',
+                'How do you handle failure?'
+            ];
+            let firstQuestion ="1"+". "+arr[0];
+            let remainingQuestions = arr.slice(1);
+            remainingQuestions.sort(() => Math.random() - 0.5);
+
+            arr = [firstQuestion, ...remainingQuestions];
        window.onload = function() {
             let currentUser = localStorage.getItem("currentUser");
 
@@ -167,8 +183,9 @@
                     currentindex++;
                     hq.textContent = "Question: "+(currentindex+1)+" / "+"10";
                     ques.textContent = arr[currentindex];
+                    arr[currentindex] = (currentindex+1)+".  "+ques;
                     if(currentindex === arr.length-1){
-                        but1.remove();
+                        but1.innerText = "Finish";
                     }
                 }
           }
@@ -188,7 +205,7 @@
             let text = event.results[0][0].transcript;
             te.textContent = text;
 
-            arr1[currentindex] = text;
+            arr1[currentindex] = (currentindex+1)+". "+text;
             
             but1.addEventListener("click", function(event){
                 te.textContent = " ";
@@ -212,3 +229,4 @@
     }
     </script>
 </html>
+
